@@ -69,7 +69,8 @@ describe("整数 A,B,C,D を求める", () => {
       "..........",
     ];
     const rectangleDetection = new RectangleDetection(stringArr);
-    const [c, d] = rectangleDetection.getResultAC();
+    rectangleDetection.findRetangle();
+    const [c, d] = rectangleDetection.getResultCD();
     expect(c).toBe(4);
   });
 
@@ -87,7 +88,8 @@ describe("整数 A,B,C,D を求める", () => {
       "..........",
     ];
     const rectangleDetection = new RectangleDetection(stringArr);
-    const [c, d] = rectangleDetection.getResultAC();
+    rectangleDetection.findRetangle();
+    const [c, d] = rectangleDetection.getResultCD();
     expect(d).toBe(9);
   });
 });

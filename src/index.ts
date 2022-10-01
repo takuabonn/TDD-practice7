@@ -11,14 +11,29 @@ class RectangleDetection {
     return [5, 8];
   };
 
-  getResultAC = () => {
-    return [4, 9];
+  getResultCD = () => {
+    return [...this.CD];
   };
 
   findRetangle = () => {
-    for (const row of this.stringArr) {
+    for (const [index, row] of this.stringArr.entries()) {
       if (!this.hasContainSharp(row)) {
         continue;
+      }
+      if (!this.CD.length) {
+        this.calchorizontalLength(row);
+      }
+    }
+  };
+
+  calchorizontalLength = (row: string) => {
+    for (const [index, point] of [...row].entries()) {
+      if (!this.CD.length && point === "#") {
+        this.CD.push(index + 1);
+      }
+      if (this.CD.length && point === ".") {
+        this.CD.push(index);
+        break;
       }
     }
   };
