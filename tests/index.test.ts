@@ -94,4 +94,49 @@ describe("整数 A,B,C,D を求める", () => {
     const [c, d] = rectangleDetection.getResultCD();
     expect(d).toBe(9);
   });
+  test("#が一個だけの時", () => {
+    const stringArr = [
+      "..........",
+      "..#.......",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+    ];
+    const rectangleDetection = new RectangleDetection(stringArr);
+    rectangleDetection.findRetangle();
+    const [a, b] = rectangleDetection.getResultAB();
+    const [c, d] = rectangleDetection.getResultCD();
+    expect(a).toBe(2);
+    expect(b).toBe(2);
+    expect(c).toBe(3);
+    expect(d).toBe(3);
+  });
+
+  test("全て#の時", () => {
+    const stringArr = [
+      "##########",
+      "##########",
+      "##########",
+      "##########",
+      "##########",
+      "##########",
+      "##########",
+      "##########",
+      "##########",
+      "##########",
+    ];
+    const rectangleDetection = new RectangleDetection(stringArr);
+    rectangleDetection.findRetangle();
+    const [a, b] = rectangleDetection.getResultAB();
+    const [c, d] = rectangleDetection.getResultCD();
+    expect(a).toBe(1);
+    expect(b).toBe(10);
+    expect(c).toBe(1);
+    expect(d).toBe(10);
+  });
 });

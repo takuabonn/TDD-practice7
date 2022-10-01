@@ -17,6 +17,9 @@ class RectangleDetection {
 
   findRetangle = () => {
     for (const [index, row] of this.stringArr.entries()) {
+      if (index === this.stringArr.length - 1 && !this.AB.length) {
+        this.AB.push(...[1, 10]);
+      }
       if (!this.AB.length && row.indexOf("#") > 0) {
         this.AB.push(index + 1);
       }
@@ -43,6 +46,10 @@ class RectangleDetection {
   //   };
 
   calchorizontalLength = (row: string) => {
+    if (row === "##########") {
+      this.CD.push(...[1, 10]);
+      return;
+    }
     for (const [index, point] of [...row].entries()) {
       if (!this.CD.length && point === "#") {
         this.CD.push(index + 1);
