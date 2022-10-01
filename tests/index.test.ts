@@ -15,7 +15,7 @@ describe("整数 A,B,C,D を求める", () => {
       "..........",
     ];
     const rectangleDetection = new RectangleDetection(stringArr);
-    const [a, b] = rectangleDetection.getResult();
+    const [a, b] = rectangleDetection.getResultAB();
     expect(a).toBe(5);
   });
   test("#が現れてからまた.だけに戻った位置を B として保持", () => {
@@ -32,7 +32,25 @@ describe("整数 A,B,C,D を求める", () => {
       "..........",
     ];
     const rectangleDetection = new RectangleDetection(stringArr);
-    const [a, b] = rectangleDetection.getResult();
+    const [a, b] = rectangleDetection.getResultAB();
     expect(b).toBe(8);
+  });
+
+  test("siの文字列から#があるかの判断", () => {
+    const stringArr = [
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "...######.",
+      "...######.",
+      "...######.",
+      "...######.",
+      "..........",
+      "..........",
+    ];
+
+    const rectangleDetection = new RectangleDetection(stringArr);
+    expect(rectangleDetection.hasContainSharp("...######.")).toBe(true);
   });
 });

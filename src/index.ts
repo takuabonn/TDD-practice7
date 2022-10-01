@@ -6,8 +6,16 @@ class RectangleDetection {
     this.stringArr = stringArr;
   }
 
-  getResult = () => {
+  getResultAB = () => {
     return [5, 8];
+  };
+
+  findRetangle = () => {
+    this.stringArr.forEach((row) => {});
+  };
+
+  hasContainSharp = (row: string) => {
+    return true;
   };
 }
 
