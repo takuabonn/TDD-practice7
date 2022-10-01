@@ -15,7 +15,24 @@ describe("整数 A,B,C,D を求める", () => {
       "..........",
     ];
     const rectangleDetection = new RectangleDetection(stringArr);
-    const result = rectangleDetection.getResult();
-    expect(result).toBe(5);
+    const [a, b] = rectangleDetection.getResult();
+    expect(a).toBe(5);
+  });
+  test("#が現れてからまた.だけに戻った位置を B として保持", () => {
+    const stringArr = [
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "...######.",
+      "...######.",
+      "...######.",
+      "...######.",
+      "..........",
+      "..........",
+    ];
+    const rectangleDetection = new RectangleDetection(stringArr);
+    const [a, b] = rectangleDetection.getResult();
+    expect(b).toBe(8);
   });
 });
