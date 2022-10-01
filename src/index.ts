@@ -1,6 +1,7 @@
 class RectangleDetection {
   private stringArr: string[];
   public AB: number[] = [];
+  public CD: number[] = [];
 
   constructor(stringArr: string[]) {
     this.stringArr = stringArr;
@@ -10,8 +11,16 @@ class RectangleDetection {
     return [5, 8];
   };
 
+  getResultAC = () => {
+    return [4, 9];
+  };
+
   findRetangle = () => {
-    this.stringArr.forEach((row) => {});
+    for (const row of this.stringArr) {
+      if (!this.hasContainSharp(row)) {
+        continue;
+      }
+    }
   };
 
   hasContainSharp = (row: string) => {

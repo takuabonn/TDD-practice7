@@ -54,4 +54,40 @@ describe("整数 A,B,C,D を求める", () => {
     expect(rectangleDetection.hasContainSharp("...######.")).toBe(true);
     expect(rectangleDetection.hasContainSharp("..........")).toBe(false);
   });
+
+  test(" si の文字列から一番最初に#が現れた位置を C として保持", () => {
+    const stringArr = [
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "...######.",
+      "...######.",
+      "...######.",
+      "...######.",
+      "..........",
+      "..........",
+    ];
+    const rectangleDetection = new RectangleDetection(stringArr);
+    const [c, d] = rectangleDetection.getResultAC();
+    expect(c).toBe(4);
+  });
+
+  test("#が現れてからまた.だけに戻った位置を D として保持", () => {
+    const stringArr = [
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "...######.",
+      "...######.",
+      "...######.",
+      "...######.",
+      "..........",
+      "..........",
+    ];
+    const rectangleDetection = new RectangleDetection(stringArr);
+    const [c, d] = rectangleDetection.getResultAC();
+    expect(d).toBe(9);
+  });
 });
