@@ -1,7 +1,7 @@
 class RectangleDetection {
   private stringArr: string[];
-  public AB: number[] = [];
-  public CD: number[] = [];
+  private AB: number[] = [];
+  private CD: number[] = [];
 
   constructor(stringArr: string[]) {
     this.stringArr = stringArr;
@@ -15,7 +15,7 @@ class RectangleDetection {
     return this.CD;
   };
 
-  sideConstitution = (start: number, end: number) => {
+  private sideConstitution = (start: number, end: number) => {
     if (start === end || !end) {
       return [start, start];
     }
@@ -43,7 +43,7 @@ class RectangleDetection {
     this.AB = this.sideConstitution(start, end);
   };
 
-  calchorizontalLength = (row: string) => {
+  private calchorizontalLength = (row: string) => {
     let start = 0;
     let end = 0;
     for (const [index, point] of [...row].entries()) {
@@ -58,10 +58,6 @@ class RectangleDetection {
       }
     }
     this.CD = this.sideConstitution(start, end);
-  };
-
-  hasContainSharp = (row: string) => {
-    return row.includes("#");
   };
 }
 
