@@ -139,4 +139,49 @@ describe("整数 A,B,C,D を求める", () => {
     expect(c).toBe(1);
     expect(d).toBe(10);
   });
+
+  test("最後が#の時", () => {
+    const stringArr = [
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "##########",
+    ];
+    const rectangleDetection = new RectangleDetection(stringArr);
+    rectangleDetection.findRetangle();
+    const [a, b] = rectangleDetection.getResultAB();
+    const [c, d] = rectangleDetection.getResultCD();
+    expect(a).toBe(10);
+    expect(b).toBe(10);
+    expect(c).toBe(1);
+    expect(d).toBe(10);
+  });
+  test("siの最後がだけ#の時", () => {
+    const stringArr = [
+      "..........",
+      ".........#",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+      "..........",
+    ];
+    const rectangleDetection = new RectangleDetection(stringArr);
+    rectangleDetection.findRetangle();
+    const [a, b] = rectangleDetection.getResultAB();
+    const [c, d] = rectangleDetection.getResultCD();
+    expect(a).toBe(2);
+    expect(b).toBe(2);
+    expect(c).toBe(10);
+    expect(d).toBe(10);
+  });
 });

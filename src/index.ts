@@ -15,50 +15,49 @@ class RectangleDetection {
     return this.CD;
   };
 
-  findRetangle = () => {
-    for (const [index, row] of this.stringArr.entries()) {
-      if (index === this.stringArr.length - 1 && !this.AB.length) {
-        this.AB.push(...[1, 10]);
-      }
-      if (!this.AB.length && row.indexOf("#") > 0) {
-        this.AB.push(index + 1);
-      }
-
-      if (this.AB.length && row.indexOf("#") === -1) {
-        this.AB.push(index);
-      }
-
-      if (!this.CD.length) {
-        this.calchorizontalLength(row);
-      }
+  sideConstitution = (start: number, end: number) => {
+    if (start === end || !end) {
+      return [start, start];
     }
+
+    return [start, end];
   };
 
-  //   calverticalLength = (row: string) => {
-  //     const index = row.indexOf("#");
-  //     if (!this.AB.length && index > 0) {
-  //       this.AB.push(index + 1);
-  //     }
-
-  //     if (!this.AB.length && index === -1) {
-  //       this.AB.push(index);
-  //     }
-  //   };
+  findRetangle = () => {
+    let start = 0;
+    let end = 0;
+    for (const [index, row] of this.stringArr.entries()) {
+      if (!this.CD.length && row.indexOf("#") >= 0) {
+        this.calchorizontalLength(row);
+      }
+      if (row.indexOf("#") >= 0 && !start) {
+        start = index + 1;
+        end = index + 1;
+        continue;
+      }
+      if (row.indexOf("#") >= 0 && start) {
+        end = end + 1;
+        continue;
+      }
+    }
+    this.AB = this.sideConstitution(start, end);
+  };
 
   calchorizontalLength = (row: string) => {
-    if (row === "##########") {
-      this.CD.push(...[1, 10]);
-      return;
-    }
+    let start = 0;
+    let end = 0;
     for (const [index, point] of [...row].entries()) {
-      if (!this.CD.length && point === "#") {
-        this.CD.push(index + 1);
+      if (point === "#" && !start) {
+        start = index + 1;
+        end = index + 1;
+        continue;
       }
-      if (this.CD.length && point === ".") {
-        this.CD.push(index);
-        break;
+      if (point === "#" && start) {
+        end = end + 1;
+        continue;
       }
     }
+    this.CD = this.sideConstitution(start, end);
   };
 
   hasContainSharp = (row: string) => {
