@@ -15,7 +15,7 @@ class RectangleDetection {
   };
 
   hasContainSharp = (row: string) => {
-    return true;
+    return row.includes("#");
   };
 }
 

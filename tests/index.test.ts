@@ -52,5 +52,6 @@ describe("整数 A,B,C,D を求める", () => {
 
     const rectangleDetection = new RectangleDetection(stringArr);
     expect(rectangleDetection.hasContainSharp("...######.")).toBe(true);
+    expect(rectangleDetection.hasContainSharp("..........")).toBe(false);
   });
 });
